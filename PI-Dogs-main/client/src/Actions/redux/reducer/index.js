@@ -1,8 +1,8 @@
-import React from 'react';
-import GET_DOGS from '../../src/Actions/names';
-import ADD_DOGS from '../../src/Actions/names';
-import REMOVE_DOGS from '../../src/Actions/names';    
-import { combineReducers } from 'redux';
+import {react} from 'react';
+import {GET_DOGS} from '.../getDogs';
+import {ADD_DOGS} from '.../addDogs';
+import {REMOVE_DOGS} from '.../removeDogs';    
+
 
 const initialState ={state : []}
 function rootreducer(state=initialState,action){

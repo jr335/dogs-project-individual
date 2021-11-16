@@ -5,7 +5,7 @@ const sequelize = require('sequelize');
 // Ejemplo: const authRouter = require('./auth.js');
 const { API_KEY } = process.env;
 const { Dogs } = require ('../models/Dog.js');
-const {Temperaments} = require ('../models/Temperament.js');
+const {Temperaments} = require ('../models/Temperament');
 const router = Router();
 
 // Configurar los routers

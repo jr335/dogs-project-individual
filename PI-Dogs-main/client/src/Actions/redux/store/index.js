@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 //compose para la Redux DevTools, es nada mas para que puedas usar el plugin en el navegador
 
 import thunk from "redux-thunk"; //para llamadas asincronas
-import reducer from '../Reducer/'//importa el reducer que CREAMOS NOSOTROS
+import reducer from '../Reducer'//importa el reducer que CREAMOS NOSOTROS
 
 //Esto es lo que importamos arriba, es para que ande la Redux DevTools ↓
 const composeEnhancers = window.REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;

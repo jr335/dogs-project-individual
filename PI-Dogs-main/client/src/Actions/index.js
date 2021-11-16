@@ -1,6 +1,6 @@
 //importo redux
 
-import names from '..Actions/index';
+import names from '..Actions/names/index';
 import GET_DOGS  from '..Actions/index' //importa algun NOMBRE de type
 import REMOVE_DOGS  from '..Actions/index' //importa algun
 import  ADD_DOGS from '.Actions/index' //

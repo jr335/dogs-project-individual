@@ -27,31 +27,21 @@
     <title>React App</title>
   </head>
   <body>
-    <div class="container">
+    <div class="root">
       <header>
         <h1>React App</h1>
       </header>
       <main>
-        <p>
-          This is the client side of the app.
-        </p>
-        <p>
-          <a href="/api/dogs">
-            Click here to see the dogs
-            fetch('/api/dogs');
-            .then(res => res.json())
-            .then(dogs => console.log(dogs));
-          </a>
-        </p>
+         
         <button onClick {()={
           pulse este boton
-        }}>
+        }}></button>
          
       </main>
 
     </div>
     <!-- <noscript>You need to enable JavaScript to run this app.</noscript> -->
-    <div id="Container"></div>
+    <div id="root"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
