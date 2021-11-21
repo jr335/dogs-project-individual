@@ -1,29 +1,30 @@
-import {React} from "react";
-import "./App.css";
-import { Route, Routes } from "react-router-dom";
- import {dogsPage} from "../src/components/dogsPage";
- import {Home} from './home';
-import {ReactDOM} from "react-dom";
-import {NavBar} from "./components/navbar";
+import './App.css';
+import React from 'react';
+import LandingPage from '../src/components/LandingPage/LandingPage.jsx';
+import { Route, Routes } from 'react-router-dom'
+import Home from '../src/components/Home/Home.jsx'
+import Details from '../src/components/Details/Details.jsx'
+import ListFilter from '../src/components/ListFilter/ListFilter.jsx'
+import Send from '../src/components/Send/send.jsx'
 
-//import "bootswatch/dist/lux/bootstrap.min.css";
-import "./index.css";
+function App() {
+  return (
+    <div className="App">
+      <Routes>
+      <Route exact path= "/" component={LandingPage}></Route>
+      <Route exact path= "/Home" component={Home}></Route>
+      <Route path= "/Details/:id" component={Details}></Route>
+      <Route path= "/Home/Search" component={ListFilter}></Route>
+      <Route path= "/Create" component={Send}></Route>
+       </Routes>
+    </div>
+  )
+}
+
+export default App;
 
 
- export default function App () {
-   return(
-        <div clasName="container">          
-         <h1>TITULO</h1>
-         <NavBar/>
-         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <Routes>
-           <Route exact path="/" element={Home} />
-           <Route path="/dogsPage/:dogName" element={dogsPage} />
-          </Routes>
-          </nav>
-          </div>
-     );
-  } 
- 
 
- ReactDOM.render(<App />, document.getElementById("root"));
+
+
+

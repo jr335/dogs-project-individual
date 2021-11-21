@@ -1,10 +1,12 @@
+
+
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
 
-//require('./db.js');
+require('./db.js');
 
 const server = express();
 server.use(express.json());
@@ -32,5 +34,27 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   console.error(err);
   res.status(status).send(message);
 });
+
+ 
+
+
+// function App() {
+//   return (
+//     <div>
+//     <Provider store={store}>
+//     <Routes>
+//       <Route exact path ="/"  element={<Home/>} />
+//       <Route exac path="/dogs" element={<LandingPage/>} />
+    
+//     </Routes>
+//     </Provider>
+//     </div>
+//   )
+// }
+
+
+
+
+// export default App;
 
 module.exports = server;

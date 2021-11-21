@@ -4,18 +4,18 @@ const axios = require('axios');
 const sequelize = require('sequelize');
 // Ejemplo: const authRouter = require('./auth.js');
 const { API_KEY } = process.env;
-const { Dogs } = require ('../models/Dog.js');
-const {Temperaments} = require ('../models/Temperament');
-const router = Router();
 
+const router = Router();
+const { Dogs, Temperamentos} = require ('../db.js');
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 //router.use('/auth', authRouter);
+// aca pido la info d la api con mi clave de accseso
 const getapidog = async () => {
 
   const apidogsUrl = await axios.get('https://api.thedogapi.com/v1/breeds?api_key=' + API_KEY);
    
-  const apidogsInfo = await apidogsUrl.data.map(el =>{
+  const apidogsInfo = await apidogsUrl.data.map(el => {
 
     return {
       name: el.name,
@@ -33,18 +33,18 @@ const getapidog = async () => {
 };
 
 
-const getapiDb = async () => {
+const getdbInfo = async () => {
   
-  // return await Dogs.findAll({
+  return await dogs.findAll({
   
-  //   include: {
-  //     model: Temperaments,
-  //     attributes: ['name'],
-  //     through: {
-  //       attributes: [],
-  //     },
-  //   }
-  // });
+     include: {
+       model: Temperamentos,
+       attributes: ['name'],
+       through: {
+        attributes: [],
+       },
+     }
+   });
    
       
 };
@@ -59,12 +59,12 @@ const getAlldogs = async () => {
 };
   
   
-//ruta para buscar por nombre de Dogs de perros - name(por query)
+//ruta para buscar por nombre de razas de perros - name(por query)
 
-router.get('/dogs', async (req, res)=>{
+router.get('/dogs?name=', async (req, res)=>{
  
   ///****  codigo alternativo?..... AVERIGUAR PORQUE ROMPE CON ESTE CÓDIGO******* */
-       const { name } = req.query
+       const  name  = req.query.name;
          let dogstotal = await getAlldogs();
         if (name) {
           const dogsfiltered = await dogstotal.filter(el => el.name.toLowerCase().includes(name.toLowerCase()));
@@ -79,17 +79,47 @@ router.get('/dogs', async (req, res)=>{
 });
 
 
- router.get('/Dogs/:id'), (req, res) => {
+ router.get('/dogs/{id}'), (req, res) => {
   const { id } = req.params;
-  Dogs.findByPk(id)
-  .then(dog => {
-    res.status(200).send(Dogs);
+  dogs.findByPk(id)
+  .then(dogs => {
+    res.status(200).send(dogs);
   })
   .catch(err => {
     res.status(500).send(err);
   });
 }
 
- 
+// router.get('/Temperamentos', async (req, res) => {
+//   const Temperamentapi = await axios.get('https://api.thedogapi.com/v1/Temperamentos?api_key=' + API_KEY);
+//   const TemperamentInfo = await Temperamentapi.data.map(el => Temperamentos)
+//   const TemperamentEach = Temperamentos.map(el => {
+//    for (let i=0; i<el.length; i++); 
+   
+//    return (el[i]);{
+//     const Temperamentos= forEach(el =>{
+//       Temperamentos.findOrCreate({
+//        where : {name: el}
+//       })
+    
+//    }
+   
+//   ),
+//  })
+  
+//    const allTemperamentos = await Temperamentos.findAll();
+//    res.send(allTemperamentos); 
+  
+  
+// });
+//}  
 
-module.exports = router;
+
+
+
+
+
+
+
+ module.export = router;
+
